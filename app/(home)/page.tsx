@@ -13,22 +13,31 @@ import AiReportButton from "./_components/ai-report-button";
 
 interface HomeProps {
   searchParams: {
-    month: string;
+    month?: string;
+    year?: string;
   };
 }
 
-const Home = async ({ searchParams: { month } }: HomeProps) => {
+const Home = async ({ searchParams: { month, year } }: HomeProps) => {
   const { userId } = await auth();
   if (!userId) {
     redirect("/login");
   }
+
+  const currentYear = new Date().getFullYear().toString();
+  const currentMonth = (new Date().getMonth() + 1).toString().padStart(2, "0");
+
   const monthIsInvalid = !month || !isMatch(month, "MM");
-  if (monthIsInvalid) {
-    redirect(`?month=${new Date().getMonth() + 1}`);
+  const yearIsInvalid = !year || isNaN(Number(year));
+
+  if (monthIsInvalid || yearIsInvalid) {
+    redirect(`?month=${currentMonth}&year=${currentYear}`);
   }
-  const dashboard = await getDashboard(month);
+
+  const dashboard = await getDashboard(month, year);
   const userCanAddTransaction = await canUserAddTransaction();
   const user = await clerkClient().users.getUser(userId);
+
   return (
     <>
       <Navbar />
@@ -38,6 +47,7 @@ const Home = async ({ searchParams: { month } }: HomeProps) => {
           <div className="flex items-center gap-3">
             <AiReportButton
               month={month}
+              year={new Date().getFullYear().toString()}
               hasPremiumPlan={
                 user.publicMetadata.subscriptionPlan === "premium"
               }
@@ -49,6 +59,7 @@ const Home = async ({ searchParams: { month } }: HomeProps) => {
           <div className="flex flex-col gap-6 overflow-hidden">
             <SummaryCards
               month={month}
+              year={new Date().getFullYear().toString()}
               {...dashboard}
               userCanAddTransaction={userCanAddTransaction}
             />

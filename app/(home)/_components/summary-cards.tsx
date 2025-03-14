@@ -5,8 +5,9 @@ import {
   WalletIcon,
 } from "lucide-react";
 import SummaryCard from "./summary-card";
-interface SummaryCards {
+interface SummaryCardsProps {
   month: string;
+  year: string;
   balance: number;
   depositsTotal: number;
   investmentsTotal: number;
@@ -15,17 +16,19 @@ interface SummaryCards {
 }
 
 const SummaryCards = async ({
+  month,
+  year,
   balance,
   depositsTotal,
   expensesTotal,
   investmentsTotal,
   userCanAddTransaction,
-}: SummaryCards) => {
+}: SummaryCardsProps) => {
   return (
     <div className="space-y-6">
       <SummaryCard
         icon={<WalletIcon size={16} />}
-        title="Saldo"
+        title={`Saldo (${month}/${year})`}
         amount={balance}
         size="large"
         userCanAddTransaction={userCanAddTransaction}

@@ -21,16 +21,21 @@ import Link from "next/link";
 interface AiReportButtonProps {
   hasPremiumPlan: boolean;
   month: string;
+  year: string;
 }
 
-const AiReportButton = ({ month, hasPremiumPlan }: AiReportButtonProps) => {
+const AiReportButton = ({
+  month,
+  year,
+  hasPremiumPlan,
+}: AiReportButtonProps) => {
   const [report, setReport] = useState<string | null>(null);
   const [reportIsLoading, setReportIsLoading] = useState(false);
+
   const handleGenerateReportClick = async () => {
     try {
       setReportIsLoading(true);
       const aiReport = await generateAiReport({ month });
-      console.log({ aiReport });
       setReport(aiReport);
     } catch (error) {
       console.error(error);
@@ -38,6 +43,7 @@ const AiReportButton = ({ month, hasPremiumPlan }: AiReportButtonProps) => {
       setReportIsLoading(false);
     }
   };
+
   return (
     <Dialog
       onOpenChange={(open) => {
@@ -59,7 +65,7 @@ const AiReportButton = ({ month, hasPremiumPlan }: AiReportButtonProps) => {
               <DialogTitle>Relatório IA</DialogTitle>
               <DialogDescription>
                 Use inteligência artificial para gerar um relatório com insights
-                sobre suas finanças.
+                sobre suas finanças ({month}/{year}).
               </DialogDescription>
             </DialogHeader>
             <ScrollArea className="prose max-h-[450px] text-white prose-h3:text-white prose-h4:text-white prose-strong:text-white">

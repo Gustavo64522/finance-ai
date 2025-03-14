@@ -28,15 +28,14 @@ const TimeSelect = () => {
   const { push } = useRouter();
   const searchParams = useSearchParams();
   const month = searchParams.get("month");
+  const year = searchParams.get("year") || new Date().getFullYear().toString();
+
   const handleMonthChange = (month: string) => {
-    push(`?month=${month}`);
+    push(`?month=${month}&year=${year}`);
   };
 
   return (
-    <Select
-      onValueChange={(value) => handleMonthChange(value)}
-      defaultValue={month ?? ""}
-    >
+    <Select onValueChange={handleMonthChange} defaultValue={month ?? ""}>
       <SelectTrigger className="w-[150px] rounded-full">
         <SelectValue placeholder="Mês" />
       </SelectTrigger>
