@@ -4,7 +4,7 @@
 
 ## 📖 Descrição
 
-Este projeto foi desenvolvido com o intuito de aprimorar minhas habilidades como programador full-stack. A plataforma permite o cadastro e o controle de transações financeiras categorizadas, como salário, despesas de mercado, lazer, entre outras. O foco principal foi no desenvolvimento de back-end, utilizando Next.js, Prisma, PostgreSQL, autenticação com Clerk, integração com Stripe e a implementação de ChatGPT para gerar insights financeiros.
+Este projeto foi desenvolvido com o intuito de aprimorar minhas habilidades para ser um programador full-stack. A plataforma permite o cadastro e o controle de transações financeiras categorizadas, como salário, despesas de mercado, lazer, entre outras. O foco principal foi no desenvolvimento de back-end, utilizando Next.js, Prisma, PostgreSQL, autenticação com Clerk, integração com Stripe e a implementação de ChatGPT para gerar insights financeiros.
 Os usuários podem registrar o método de pagamento utilizado em cada transação, como Pix, cartão de crédito, etc., e visualizar gráficos interativos que mostram a divisão de despesas, receitas e investimentos. A integração com o ChatGPT já está implementada e fornece insights sobre a saúde financeira do usuário, incluindo dicas de economia e análise de despesas por categoria. No entanto, como o projeto é de aprendizado e não um produto comercial, a funcionalidade de insights está disponível apenas como um exemplo, já que o acesso à API do ChatGPT ainda não foi viabilizado para uso em produção.
 
 ## 🚀 Tecnologias Utilizadas
@@ -27,6 +27,7 @@ Os usuários podem registrar o método de pagamento utilizado em cada transaçã
 
 ## 📸 Demonstração
 https://github.com/user-attachments/assets/8c495acf-3359-4615-975f-67606a0ea7d6
+- [Link do Finance.ai](https://finance-ai-mocha.vercel.app/)
 
 ## ⚙️ Funcionalidades
 
